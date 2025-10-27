@@ -11,6 +11,8 @@
   <button id="Red">Red</button>
   <button id="Green">Green</button>
   <button id="Blue">Blue</button>
+  <button id="laserOn">Laser On</button>
+   <button id="laserOff">Laser Off</button>
 
   <p id="status">Not connected</p>
 
@@ -49,6 +51,14 @@
 
      document.getElementById('Green').addEventListener('click', () => {
       sendToArduino('3');
+    });
+
+    document.getElementById('laserOn').addEventListener('click', () => {
+      sendToArduino('4');
+    });
+
+    document.getElementById('laserOff').addEventListener('click', () => {
+      sendToArduino('5');
     });
   </script>
 </body>
