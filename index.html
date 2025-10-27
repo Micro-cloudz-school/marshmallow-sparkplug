@@ -8,8 +8,9 @@
   <h2>Arduino Serial Control</h2>
 
   <button id="connect">Connect</button>
-  <button id="ledOn">LED ON</button>
-  <button id="ledOff">LED OFF</button>
+  <button id="Red">Red</button>
+  <button id="Green">Green</button>
+  <button id="Blue">Blue</button>
 
   <p id="status">Not connected</p>
 
@@ -38,12 +39,16 @@
       await writer.write(encoder.encode(data + "\n"));
     }
 
-    document.getElementById('ledOn').addEventListener('click', () => {
-      sendToArduino('ON');
+    document.getElementById('Red').addEventListener('click', () => {
+      sendToArduino('1');
     });
 
-    document.getElementById('ledOff').addEventListener('click', () => {
-      sendToArduino('OFF');
+    document.getElementById('Green').addEventListener('click', () => {
+      sendToArduino('2');
+    });
+
+     document.getElementById('Blue').addEventListener('click', () => {
+      sendToArduino('3');
     });
   </script>
 </body>
