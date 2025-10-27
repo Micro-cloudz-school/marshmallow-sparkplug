@@ -39,15 +39,15 @@
       await writer.write(encoder.encode(data + "\n"));
     }
 
-    document.getElementById('Red').addEventListener('click', () => {
+    document.getElementById('Blue').addEventListener('click', () => {
       sendToArduino('1');
     });
 
-    document.getElementById('Green').addEventListener('click', () => {
+    document.getElementById('Red').addEventListener('click', () => {
       sendToArduino('2');
     });
 
-     document.getElementById('Blue').addEventListener('click', () => {
+     document.getElementById('Green').addEventListener('click', () => {
       sendToArduino('3');
     });
   </script>
