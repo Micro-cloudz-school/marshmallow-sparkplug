@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Arduino Serial Controller</title>
+</head>
+<body>
+  <h2>Arduino Serial Control</h2>
+
+  <button id="connect">Connect</button>
+  <button id="ledOn">LED ON</button>
+  <button id="ledOff">LED OFF</button>
+
+  <p id="status">Not connected</p>
+
+  <script>
+    let port;
+    let writer;
+
+    document.getElementById('connect').addEventListener('click', async () => {
+      try {
+        port = await navigator.serial.requestPort();
+        await port.open({ baudRate: 9600 });
+        writer = port.writable.getWriter();
+        document.getElementById('status').textContent = "Connected to Arduino!";
+      } catch (err) {
+        console.error('Connection failed:', err);
+        document.getElementById('status').textContent = "Connection failed.";
+      }
+    });
+
+    async function sendToArduino(data) {
+      if (!writer) {
+        alert("Connect to Arduino first!");
+        return;
+      }
+      const encoder = new TextEncoder();
+      await writer.write(encoder.encode(data + "\n"));
+    }
+
+    document.getElementById('ledOn').addEventListener('click', () => {
+      sendToArduino('ON');
+    });
+
+    document.getElementById('ledOff').addEventListener('click', () => {
+      sendToArduino('OFF');
+    });
+  </script>
+</body>
+</html>
