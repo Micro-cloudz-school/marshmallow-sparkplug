@@ -8,11 +8,9 @@
   <h2>Arduino Serial Control</h2>
 
   <button id="connect">Connect</button>
-  <button id="Red">Red</button>
-  <button id="Green">Green</button>
-  <button id="Blue">Blue</button>
-  <button id="laserOn">Laser On</button>
-   <button id="laserOff">Laser Off</button>
+  <button id="1">Action 1</button>
+  <button id="2">Action 2</button>
+  <button id="3">Action 3</button>
 
   <p id="status">Not connected</p>
 
@@ -41,25 +39,18 @@
       await writer.write(encoder.encode(data + "\n"));
     }
 
-    document.getElementById('Blue').addEventListener('click', () => {
+    document.getElementById('1').addEventListener('click', () => {
       sendToArduino('1');
     });
 
-    document.getElementById('Red').addEventListener('click', () => {
+    document.getElementById('2').addEventListener('click', () => {
       sendToArduino('2');
     });
 
-     document.getElementById('Green').addEventListener('click', () => {
+     document.getElementById('3').addEventListener('click', () => {
       sendToArduino('3');
     });
 
-    document.getElementById('laserOn').addEventListener('click', () => {
-      sendToArduino('hi');
-    });
-
-    document.getElementById('laserOff').addEventListener('click', () => {
-      sendToArduino('lo');
-    });
   </script>
 </body>
 </html>
